@@ -24,6 +24,7 @@ func getAddrsEth0() ([]net.Addr, error) {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Starting Request")
 	addrs, err := getAddrsEth0()
 	if err != nil {
 		fmt.Fprint(w, err)
@@ -36,6 +37,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	fmt.Println("Starting server on :80")
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 }
