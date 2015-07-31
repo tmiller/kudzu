@@ -5,7 +5,6 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"time"
 )
 
 func getAddrsEth0() []net.Addr {
@@ -31,9 +30,7 @@ func getAddrsEth0() []net.Addr {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	log.Println("Starting Request")
-	addrs := getAddrsEth0()
-	fmt.Println(w, time.Now().Format(time.UnixDate))
-	for _, addr := range addrs {
+	for _, addr := range getAddrsEth0() {
 		fmt.Fprintln(w, addr.String())
 	}
 }
